@@ -594,7 +594,7 @@ periodics:
              - |
               set -o xtrace
               #Call to boskos to checkout resource
-               source "./hack/boskos.sh"
+              #source "./hack/boskos.sh"
 
               #Setup of kubetest2 tf deployer and ginkgo tester
               make install-deployer-tf
@@ -609,13 +609,17 @@ periodics:
                  --ssh-private-key /etc/secret-volume/ssh-privatekey \
                  --workers-count 1 --cluster-name $CLUSTER_NAME \
                  --up --down --auto-approve --retry-on-tf-failure 3 --ignore-destroy-errors\
-                 --break-kubetest-on-upfail true \
-                 --build-version $(curl -Ls https://dl.k8s.io/ci/latest.txt) \
-                 --fetch-instance-data=true
+                 --break-kubetest-on-upfail true --fetch-instance-data=true\
+                 --build-version $(curl -Ls https://dl.k8s.io/ci/latest.txt)
 
                export KUBECONFIG="$(pwd)/$CLUSTER_NAME/kubeconfig"
                ./hack/csi-driver.sh
-   
+               
+               kubetest2 tf --powervs-region ${BOSKOS_REGION} --powervs-zone ${BOSKOS_ZONE} \
+                 --powervs-service-id ${BOSKOS_RESOURCE_ID} \
+                 --ignore-cluster-dir true \
+                 --cluster-name $CLUSTER_NAME \
+                 --down --auto-approve --ignore-destroy-errors 
 
                [ -z "${BOSKOS_HOST:-}" ] || release_account >> "$ARTIFACTS/boskos.log" 2>&1
                [ $rc != 0 ] && echo "ERROR: E2e Serial tests exited with code: $rc"; exit $rc
