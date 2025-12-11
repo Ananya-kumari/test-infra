@@ -564,7 +564,7 @@ periodics:
       timeout: 3h
     extra_refs:
       - base_ref: powervs-csi
-        org: Poorna-Gottimukkula1
+        org: Ananya-Kumari
         repo: provider-ibmcloud-test-infra
         workdir: true
     annotations:
@@ -614,6 +614,8 @@ periodics:
                  --build-version $(curl -Ls https://dl.k8s.io/ci/latest.txt)
 
               export KUBECONFIG="$(pwd)/$CLUSTER_NAME/kubeconfig"
+              export INSTANCE_LIST_JSON="$(pwd)/$CLUSTER_NAME/instance_list.json"
+              
               ./hack/csi-driver.sh
 
               kubetest2 tf --powervs-region ${BOSKOS_REGION} --powervs-zone ${BOSKOS_ZONE} \
