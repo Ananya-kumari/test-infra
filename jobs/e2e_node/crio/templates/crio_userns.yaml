@@ -18,6 +18,10 @@ storage:
       contents:
         local: 20-crio.conf
       mode: 0644
+    - path: /etc/containers/registries.conf.d/99-localhost-insecure.conf
+      contents:
+        local: 99-localhost-insecure.conf
+      mode: 0644
     - path: /etc/sysctl.d/99-e2e-sysctl.conf
       contents:
         local: 99-e2e-sysctl.conf
@@ -33,7 +37,7 @@ storage:
         inline: |
           [Manager]
           DefaultEnvironment="CRIO_SCRIPT_COMMIT=a7cafc89fd6011acbc8668f325752ea8f6dde0ae"
-          DefaultEnvironment="CRIO_COMMIT=cae4e9ac33013ddcd57b258dfe6b845533f2fc84"
+          DefaultEnvironment="CRIO_COMMIT=14e7ced5d93fb2dedf7afd65111dc6f739301f23"
     # Note: this ignition file assumes FCOS has shadow-utils installed.
     # As of the time of writing this, it does.
     - path: /etc/subuid

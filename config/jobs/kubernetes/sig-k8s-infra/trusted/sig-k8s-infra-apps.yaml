@@ -30,12 +30,11 @@ postsubmits:
         github_team_slugs:
         - org: kubernetes
           slug: sig-k8s-infra-leads
-        # proxy for test-infra-oncall
         - org: kubernetes
           slug: test-infra-admins
-        # TODO: sig-specific team in charge of this app
-        # - org: kubernetes
-        #   slug: sig-foo-bar
+          # TODO: sig-specific team in charge of this app
+          # - org: kubernetes
+          #   slug: sig-foo-bar
       spec:
         serviceAccountName: prow-deployer
         containers:
@@ -70,12 +69,11 @@ postsubmits:
         github_team_slugs:
         - org: kubernetes
           slug: sig-k8s-infra-leads
-        # proxy for test-infra-oncall
         - org: kubernetes
           slug: test-infra-admins
-        # TODO: sig-specific team in charge of this app
-        # - org: kubernetes
-        #   slug: sig-foo-bar
+          # TODO: sig-specific team in charge of this app
+          # - org: kubernetes
+          #   slug: sig-foo-bar
       spec:
         serviceAccountName: prow-deployer
         containers:
@@ -110,12 +108,11 @@ postsubmits:
         github_team_slugs:
         - org: kubernetes
           slug: sig-k8s-infra-leads
-        # proxy for test-infra-oncall
         - org: kubernetes
           slug: test-infra-admins
-        # TODO: sig-specific team in charge of this app
-        # - org: kubernetes
-        #   slug: sig-foo-bar
+          # TODO: sig-specific team in charge of this app
+          # - org: kubernetes
+          #   slug: sig-foo-bar
       spec:
         serviceAccountName: prow-deployer
         containers:
@@ -150,12 +147,11 @@ postsubmits:
         github_team_slugs:
         - org: kubernetes
           slug: sig-k8s-infra-leads
-        # proxy for test-infra-oncall
         - org: kubernetes
           slug: test-infra-admins
-        # TODO: sig-specific team in charge of this app
-        # - org: kubernetes
-        #   slug: sig-foo-bar
+          # TODO: sig-specific team in charge of this app
+          # - org: kubernetes
+          #   slug: sig-foo-bar
       spec:
         serviceAccountName: prow-deployer
         containers:
@@ -190,12 +186,11 @@ postsubmits:
         github_team_slugs:
         - org: kubernetes
           slug: sig-k8s-infra-leads
-        # proxy for test-infra-oncall
         - org: kubernetes
           slug: test-infra-admins
-        # TODO: sig-specific team in charge of this app
-        # - org: kubernetes
-        #   slug: sig-foo-bar
+          # TODO: sig-specific team in charge of this app
+          # - org: kubernetes
+          #   slug: sig-foo-bar
       spec:
         serviceAccountName: prow-deployer
         containers:
@@ -230,12 +225,11 @@ postsubmits:
         github_team_slugs:
         - org: kubernetes
           slug: sig-k8s-infra-leads
-        # proxy for test-infra-oncall
         - org: kubernetes
           slug: test-infra-admins
-        # TODO: sig-specific team in charge of this app
-        # - org: kubernetes
-        #   slug: sig-foo-bar
+          # TODO: sig-specific team in charge of this app
+          # - org: kubernetes
+          #   slug: sig-foo-bar
       spec:
         serviceAccountName: prow-deployer
         containers:
@@ -270,12 +264,11 @@ postsubmits:
         github_team_slugs:
         - org: kubernetes
           slug: sig-k8s-infra-leads
-        # proxy for test-infra-oncall
         - org: kubernetes
           slug: test-infra-admins
-        # TODO: sig-specific team in charge of this app
-        # - org: kubernetes
-        #   slug: sig-foo-bar
+          # TODO: sig-specific team in charge of this app
+          # - org: kubernetes
+          #   slug: sig-foo-bar
       spec:
         serviceAccountName: prow-deployer
         containers:
@@ -310,12 +303,11 @@ postsubmits:
         github_team_slugs:
         - org: kubernetes
           slug: sig-k8s-infra-leads
-        # proxy for test-infra-oncall
         - org: kubernetes
           slug: test-infra-admins
-        # TODO: sig-specific team in charge of this app
-        # - org: kubernetes
-        #   slug: sig-foo-bar
+          # TODO: sig-specific team in charge of this app
+          # - org: kubernetes
+          #   slug: sig-foo-bar
       spec:
         serviceAccountName: prow-deployer
         containers:
@@ -350,12 +342,11 @@ postsubmits:
         github_team_slugs:
         - org: kubernetes
           slug: sig-k8s-infra-leads
-        # proxy for test-infra-oncall
         - org: kubernetes
           slug: test-infra-admins
-        # TODO: sig-specific team in charge of this app
-        # - org: kubernetes
-        #   slug: sig-foo-bar
+          # TODO: sig-specific team in charge of this app
+          # - org: kubernetes
+          #   slug: sig-foo-bar
       spec:
         serviceAccountName: prow-deployer
         containers:

@@ -3,7 +3,7 @@
 presubmits:
   kubernetes/kops:
 
-# {"cloud": "aws", "distro": "u2404", "k8s_version": "stable", "kops_channel": "alpha", "networking": "amazonvpc"}
+  # {"cloud": "aws", "distro": "u2404", "k8s_version": "stable", "kops_channel": "alpha", "networking": "amazonvpc"}
   - name: presubmit-kops-aws-scale-amazonvpc
     cluster: k8s-infra-kops-prow-build
     branches:
@@ -27,7 +27,7 @@ presubmits:
       path_alias: k8s.io/perf-tests
     spec:
       containers:
-      - image: gcr.io/k8s-staging-test-infra/kubekins-e2e:v20251029-79c2132152-master
+      - image: gcr.io/k8s-staging-test-infra/kubekins-e2e:v20251209-13d7d11b0f-master
         imagePullPolicy: Always
         command:
         - runner.sh
@@ -69,7 +69,7 @@ presubmits:
       testgrid-days-of-results: '90'
       testgrid-tab-name: presubmit-kops-aws-scale-amazonvpc
 
-# {"cloud": "aws", "distro": "u2404", "k8s_version": "stable", "kops_channel": "alpha", "networking": "amazonvpc"}
+  # {"cloud": "aws", "distro": "u2404", "k8s_version": "stable", "kops_channel": "alpha", "networking": "amazonvpc"}
   - name: presubmit-kops-aws-scale-amazonvpc-using-cl2
     cluster: eks-prow-build-cluster
     branches:
@@ -93,7 +93,7 @@ presubmits:
       path_alias: k8s.io/perf-tests
     spec:
       containers:
-      - image: gcr.io/k8s-staging-test-infra/kubekins-e2e:v20251029-79c2132152-master
+      - image: gcr.io/k8s-staging-test-infra/kubekins-e2e:v20251209-13d7d11b0f-master
         imagePullPolicy: Always
         command:
         - runner.sh
@@ -175,7 +175,7 @@ presubmits:
       testgrid-days-of-results: '90'
       testgrid-tab-name: presubmit-kops-aws-scale-amazonvpc-using-cl2
 
-# {"cloud": "aws", "distro": "u2404", "k8s_version": "stable", "kops_channel": "alpha", "networking": "amazonvpc"}
+  # {"cloud": "aws", "distro": "u2404", "k8s_version": "stable", "kops_channel": "alpha", "networking": "amazonvpc"}
   - name: presubmit-kops-aws-small-scale-amazonvpc-using-cl2
     cluster: eks-prow-build-cluster
     branches:
@@ -199,7 +199,7 @@ presubmits:
       path_alias: k8s.io/perf-tests
     spec:
       containers:
-      - image: gcr.io/k8s-staging-test-infra/kubekins-e2e:v20251029-79c2132152-master
+      - image: gcr.io/k8s-staging-test-infra/kubekins-e2e:v20251209-13d7d11b0f-master
         imagePullPolicy: Always
         command:
         - runner.sh
@@ -279,11 +279,12 @@ presubmits:
       testgrid-days-of-results: '90'
       testgrid-tab-name: presubmit-kops-aws-small-scale-amazonvpc-using-cl2
 
-# {"cloud": "gce", "distro": "u2404", "k8s_version": "stable", "kops_channel": "alpha", "networking": "gce"}
+  # {"cloud": "gce", "distro": "u2404", "k8s_version": "stable", "kops_channel": "alpha", "networking": "gce"}
   - name: presubmit-kops-gce-scale-ipalias-using-cl2
     cluster: k8s-infra-prow-build
     branches:
     - master
+    job_queue_name: "5k-gce-scale-test"
     always_run: false
     optional: false
     skip_report: false
@@ -302,7 +303,7 @@ presubmits:
     spec:
       serviceAccountName: k8s-kops-test
       containers:
-      - image: gcr.io/k8s-staging-test-infra/kubekins-e2e:v20251029-79c2132152-master
+      - image: gcr.io/k8s-staging-test-infra/kubekins-e2e:v20251209-13d7d11b0f-master
         imagePullPolicy: Always
         command:
         - runner.sh
@@ -382,11 +383,13 @@ presubmits:
       testgrid-days-of-results: '90'
       testgrid-tab-name: presubmit-kops-gce-scale-ipalias-using-cl2
 
-# {"cloud": "gce", "distro": "u2404", "k8s_version": "stable", "kops_channel": "alpha", "networking": "gce"}
+  # {"cloud": "gce", "distro": "u2404", "k8s_version": "stable", "kops_channel": "alpha", "networking": "gce"}
   - name: presubmit-kops-gce-small-scale-ipalias-using-cl2
     cluster: k8s-infra-prow-build
     branches:
     - master
+    run_if_changed: '^tests\/e2e\/scenarios\/scalability\/run-test.sh'
+    job_queue_name: "5k-gce-scale-test"
     always_run: false
     optional: false
     skip_report: false
@@ -405,7 +408,7 @@ presubmits:
     spec:
       serviceAccountName: k8s-kops-test
       containers:
-      - image: gcr.io/k8s-staging-test-infra/kubekins-e2e:v20251029-79c2132152-master
+      - image: gcr.io/k8s-staging-test-infra/kubekins-e2e:v20251209-13d7d11b0f-master
         imagePullPolicy: Always
         command:
         - runner.sh
@@ -483,11 +486,12 @@ presubmits:
       testgrid-days-of-results: '90'
       testgrid-tab-name: presubmit-kops-gce-small-scale-ipalias-using-cl2
 
-# {"cloud": "gce", "distro": "u2404", "k8s_version": "stable", "kops_channel": "alpha", "networking": "gce"}
+  # {"cloud": "gce", "distro": "u2404", "k8s_version": "stable", "kops_channel": "alpha", "networking": "gce"}
   - name: presubmit-kops-gce-small-scale-kindnet-using-cl2
     cluster: k8s-infra-prow-build
     branches:
     - master
+    job_queue_name: "5k-gce-scale-test"
     always_run: false
     optional: false
     skip_report: false
@@ -506,7 +510,7 @@ presubmits:
     spec:
       serviceAccountName: k8s-kops-test
       containers:
-      - image: gcr.io/k8s-staging-test-infra/kubekins-e2e:v20251029-79c2132152-master
+      - image: gcr.io/k8s-staging-test-infra/kubekins-e2e:v20251209-13d7d11b0f-master
         imagePullPolicy: Always
         command:
         - runner.sh
