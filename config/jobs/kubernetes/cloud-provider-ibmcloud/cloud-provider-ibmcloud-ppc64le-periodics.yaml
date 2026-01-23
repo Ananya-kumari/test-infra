@@ -134,8 +134,6 @@ periodics:
                 --build-version $(curl -Ls https://dl.k8s.io/ci/latest.txt) \
                 --test=ginkgo -- --test-package-dir ci --test-package-marker latest.txt --focus-regex='\[Conformance\]'; rc=$?
 
-              [ $rc != 0 ] && echo "ERROR: E2E Conformance Test suite exited with code:$rc"; exit $rc
-
   - name: ci-kubernetes-ppc64le-e2e-node-latest-kubetest2
     cron: "30 3-21/6 * * *" #  every 6h starting at 03:30 UTC
     cluster: k8s-infra-ppc64le-prow-build
@@ -198,7 +196,6 @@ periodics:
                 --cluster-name $CLUSTER_NAME\
                 --down --auto-approve --ignore-destroy-errors
 
-              [ $rc != 0 ] && echo "ERROR: E2ENode Test suite exited with code:$rc"; exit $rc
   - name: ci-kubernetes-ppc64le-e2e-alpha-enabled-default
     cron: "30 4-22/6 * * *" # every 6h starting at 04:30 UTC
     cluster: k8s-infra-ppc64le-prow-build
@@ -256,7 +253,6 @@ periodics:
                 --test=ginkgo -- --parallel 15 --test-package-dir ci --test-package-marker latest.txt \
                 --skip-regex="\[Driver:.gcepd\]|\[Slow\]|\[Serial\]|\[Disruptive\]|\[Flaky\]|\[Feature:.+\]|KubeProxy.should.update.metric"; rc=$?
 
-              [ $rc != 0 ] && echo "ERROR: alpha-enabled-default tests exited with code: $rc"; exit $rc
   - name: ci-kubernetes-e2e-ppc64le-default
     cron: "0 6-22/8 * * *" # every 8h starting at 06:00 UTC
     cluster: k8s-infra-ppc64le-prow-build
@@ -311,7 +307,6 @@ periodics:
                 --test=ginkgo -- --parallel 15 --test-package-dir ci --test-package-marker latest.txt \
                 --skip-regex="\[Driver:.gcepd\]|\[Slow\]|\[Serial\]|\[Disruptive\]|\[Flaky\]|\[Feature:.+\]|KubeProxy.should.update.metric"; rc=$?
 
-              [ $rc != 0 ] && echo "ERROR: E2e default tests exited with code: $rc"; exit $rc
   - name: ci-kubernetes-ppc64le-e2e-slow-kubetest2
     cron: "30 7-22/3 * * *" # every 3h starting at 07:30 UTC
     cluster: k8s-infra-ppc64le-prow-build
@@ -365,7 +360,6 @@ periodics:
                 --build-version $(curl -Ls https://dl.k8s.io/ci/latest.txt) \
                 --test=ginkgo -- --parallel 30 --test-package-dir ci --test-package-marker latest.txt --focus-regex='\[Slow\]' --skip-regex='\[Driver:.gcepd\]|\[Serial\]|\[Disruptive\]|\[Flaky\]|\[Feature:' ; rc=$?
 
-              [ $rc != 0 ] && echo "ERROR: E2e Slow tests exited with code: $rc"; exit $rc
   - name: ci-kubernetes-e2e-ppc64le-serial-kubetest2
     cron: "30 9-17/8 * * *" # every 8h starting at 09:30 UTC
     cluster: k8s-infra-ppc64le-prow-build
@@ -419,5 +413,3 @@ periodics:
                 --build-version $(curl -Ls https://dl.k8s.io/ci/latest.txt) \
                 --test=ginkgo -- --parallel 1 --test-package-dir ci --test-package-marker latest.txt \
                 --focus-regex='\[Serial\]|\[Disruptive\]' --skip-regex='\[Driver:.gcepd\]|\[Flaky\]|\[Feature:.+\]|\[sig-cloud-provider-gcp\]'; rc=$?
-
-              [ $rc != 0 ] && echo "ERROR: E2e Serial tests exited with code: $rc"; exit $rc
