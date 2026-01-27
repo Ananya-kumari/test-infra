@@ -18,10 +18,10 @@ plank:
       timeout: 2h
       grace_period: 15m
       utility_images:
-        clonerefs: "us-docker.pkg.dev/k8s-infra-prow/images/clonerefs:v20260112-782d8a7cf"
-        initupload: "us-docker.pkg.dev/k8s-infra-prow/images/initupload:v20260112-782d8a7cf"
-        entrypoint: "us-docker.pkg.dev/k8s-infra-prow/images/entrypoint:v20260112-782d8a7cf"
-        sidecar: "us-docker.pkg.dev/k8s-infra-prow/images/sidecar:v20260112-782d8a7cf"
+        clonerefs: "us-docker.pkg.dev/k8s-infra-prow/images/clonerefs:v20260126-a0e74f2f7"
+        initupload: "us-docker.pkg.dev/k8s-infra-prow/images/initupload:v20260126-a0e74f2f7"
+        entrypoint: "us-docker.pkg.dev/k8s-infra-prow/images/entrypoint:v20260126-a0e74f2f7"
+        sidecar: "us-docker.pkg.dev/k8s-infra-prow/images/sidecar:v20260126-a0e74f2f7"
       gcs_configuration:
         bucket: "kubernetes-ci-logs"
         path_strategy: "legacy"
@@ -857,6 +857,7 @@ tide:
     kubernetes/dashboard: squash
     kubernetes/ingress-nginx: squash
     kubernetes-sigs/ingress2gateway: squash
+    kubernetes-sigs/node-readiness-controller: squash
   pr_status_base_urls:
     '*': https://prow.k8s.io/pr
   blocker_label: tide/merge-blocker

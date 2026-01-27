@@ -19,6 +19,7 @@ periodics:
       args:
       - --ttl=12h
       - --path=s3://k8s-infra-kops-scale-tests/objs.json
+      - --sweep-count=2
       image: gcr.io/k8s-staging-boskos/aws-janitor:v20260107-c2c6f43
       resources:
         requests:
@@ -104,7 +105,7 @@ periodics:
       - name: CONTROL_PLANE_COUNT
         value: "3"
       - name: CONTROL_PLANE_SIZE
-        value: "c5.18xlarge"
+        value: "c8a.24xlarge"
       - name: KOPS_STATE_STORE
         value: "s3://k8s-infra-kops-scale-tests"
       - name: PROMETHEUS_SCRAPE_KUBE_PROXY
@@ -120,7 +121,7 @@ periodics:
       - name: ENABLE_PROMETHEUS_SERVER
         value: "true"
       - name: PROMETHEUS_PVC_STORAGE_CLASS
-        value: "gp2"
+        value: "io2"
       - name: CLOUD_PROVIDER
         value: "aws"
       - name: CLUSTER_NAME
@@ -142,7 +143,8 @@ periodics:
   - "perfDashBuildsCount: 270"
   - "perfDashJobType: performance"
   cluster: eks-prow-build-cluster
-  cron: '1 19 * * *' # Run every day at 3:01 PM EDT/12:01 PM PDT (19:01 UTC)
+  cron: '1 0,6,12,18 * * *' # Run every day at 12:01 AM, 6:01 AM, 12:01 PM, and 6:01 PM UTC (4 times a day)
+  # Equivalent local times: 7:01 PM, 1:01 AM, 7:01 AM, 1:01 PM PDT / 8:01 PM, 2:01 AM, 8:01 AM, 2:01 PM PST / 8:01 PM, 2:01 AM, 8:01 AM, 2:01 PM EDT (during daylight saving)
   labels:
     preset-service-account: "true"
     preset-aws-ssh: "true"
@@ -177,7 +179,7 @@ periodics:
     testgrid-alert-email: kubernetes-sig-scale@googlegroups.com, eks-scalability@amazon.com
   spec:
     containers:
-    - image: gcr.io/k8s-staging-test-infra/kubekins-e2e:v20260108-6ef4f0b08f-master
+    - image: us-central1-docker.pkg.dev/k8s-staging-test-infra/images/kubekins-e2e:v20260120-e2c483ffe9-master
       imagePullPolicy: Always
       command:
       - runner.sh
@@ -209,7 +211,7 @@ periodics:
       - name: CONTROL_PLANE_COUNT
         value: "3"
       - name: CONTROL_PLANE_SIZE
-        value: "c5.4xlarge"
+        value: "c8a.8xlarge"
       - name: KOPS_STATE_STORE
         value: "s3://k8s-infra-kops-scale-tests"
       - name: PROMETHEUS_SCRAPE_KUBE_PROXY
@@ -225,7 +227,7 @@ periodics:
       - name: ENABLE_PROMETHEUS_SERVER
         value: "true"
       - name: PROMETHEUS_PVC_STORAGE_CLASS
-        value: "gp2"
+        value: "io2"
       - name: CLOUD_PROVIDER
         value: "aws"
       - name: CLUSTER_NAME
